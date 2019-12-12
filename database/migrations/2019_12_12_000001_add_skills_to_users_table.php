@@ -14,6 +14,9 @@ class AddSkillsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('nick_name')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('height')->nullable();
             $table->string('position')->nullable();
             $table->integer('throwing')->nullable();
             $table->integer('catching')->nullable();
@@ -31,7 +34,7 @@ class AddSkillsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['position', 'throwing', 'catching', 'speed', 'offense', 'defense']);
+            $table->dropColumn(['position', 'throwing', 'catching', 'speed', 'offense', 'defense', 'nick_name', 'age', 'height']);
         });
     }
 }

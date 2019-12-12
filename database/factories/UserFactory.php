@@ -26,5 +26,8 @@ $factory->define(User::class, function (Faker $faker) {
         'speed' => $faker->numberBetween(1, 5),
         'offense' => $faker->numberBetween(1, 5),
         'defense' => $faker->numberBetween(1, 5),
+        'nick_name' => $faker->name,
+        'age' => $faker->randomNumber(2),
+        'height' =>$faker->numberBetween(150, 200),
     ];
 });
