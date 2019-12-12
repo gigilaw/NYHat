@@ -1,6 +1,9 @@
 FROM php:7.4.0-apache-buster
 COPY . /var/www/html
 
+RUN apt-get update && apt-get install -y git ssh \
+  --no-install-recommends && rm -r /var/lib/apt/lists/*
+
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
