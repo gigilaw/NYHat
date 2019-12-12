@@ -19,7 +19,7 @@ class CreateTournamentsTable extends Migration
             $table->string('description', 255);
             $table->float('cost');
             $table->unsignedInteger('capacity');
-            $table->dateTime('state_date');
+            $table->dateTime('start_date');
             $table->dateTime('end_date');
 
             $table->timestamps();
