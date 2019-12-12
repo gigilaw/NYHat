@@ -14,6 +14,25 @@ class ParticipantCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => $this->collection->transform(function ($user) {
+                $array = [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'nick_name' => $user->nick_name,
+                    'email' => $user->email,
+                    'height' => $user->height,
+                    'age' => $user->age,
+                    'position' => $user->position,
+                    'throwing' => $user->throwing,
+                    'catching' => $user->catching,
+                    'speed' => $user->speed,
+                    'offense' => $user->offense,
+                    'defense' => $user->defense,
+                    'payment' => $user->payments,
+                ];
+                return $array;
+            })
+        ];
     }
 }

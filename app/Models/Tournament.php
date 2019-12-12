@@ -13,4 +13,8 @@ class Tournament extends Model
     {
         return $this->belongsToMany('App\Models\User', 'tournament_users')->withTimeStamps();
     }
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
 }

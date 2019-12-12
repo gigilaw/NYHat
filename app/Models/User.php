@@ -35,4 +35,9 @@ class User extends Model
     {
         return $this->belongsToMany('App\Models\Tournament', 'tournament_users')->withTimeStamps();
     }
+
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
 }
