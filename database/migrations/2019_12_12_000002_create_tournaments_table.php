@@ -21,6 +21,7 @@ class CreateTournamentsTable extends Migration
             $table->unsignedInteger('capacity');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->string('name_code')->unique();
 
             $table->timestamps();
             $table->softDeletes();

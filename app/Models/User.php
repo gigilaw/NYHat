@@ -30,4 +30,9 @@ class User extends Model
         'offense',
         'defense',
     ];
+
+    public function tournaments()
+    {
+        return $this->belongsToMany('App\Models\Tournament', 'tournament_users')->withTimeStamps();
+    }
 }
