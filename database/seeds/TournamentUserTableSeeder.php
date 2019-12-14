@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
+use App\Models\TournamentUser;
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class TournamentUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 10)->create();
+        factory(TournamentUser::class, 10)->create();
     }
 }
