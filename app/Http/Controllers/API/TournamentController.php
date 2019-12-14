@@ -28,19 +28,14 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function participants(Request $request, $tournament)
+    public function participants(Request $request, String $nameCode)
     {
-        if (Tournament::where('name_code', $tournament)->get()->isEmpty()) {
-            return response()->json([
-                'message' => 'Tournament Not Found'], 404);
+        $tournament = Tournament::where('name_code', $nameCode)->first();
+
+        if (is_null($tournament)) {
+            return response()->json(['message' => 'Tournament Not Found'], 404);
         }
 
-        $tournament = Tournament::where('name_code', $tournament)->first();
-
-        $users = User::whereHas('tournaments', function (Builder $query) use ($tournament) {
-            $query->where('tournament_users.tournament_id', $tournament->id);
-        })->get();
-        
-        return new ParticipantCollection($users);
+        return new ParticipantCollection($tournament->tournamentUsers()->with(['payment', 'user'])->get());
     }
 }

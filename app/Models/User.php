@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Tournament;
+use App\Models\TournamentUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,6 +15,11 @@ class User extends Model
         'HANDLER' => 'handler',
         'CUTTER' => 'cutter',
         'HYBRID' => 'hybrid'
+    ];
+
+    public static $gender = [
+        'MALE' => 'male',
+        'FEMALE' => 'female',
     ];
 
     /**
@@ -29,15 +36,18 @@ class User extends Model
         'position',
         'offense',
         'defense',
+        'age',
+        'height',
+        'gender',
     ];
 
     public function tournaments()
     {
-        return $this->belongsToMany('App\Models\Tournament', 'tournament_users')->withTimeStamps();
+        return $this->belongsToMany(Tournament::class, 'tournament_users')->withTimeStamps();
     }
 
-    public function payments()
+    public function tournamentUsers()
     {
-        return $this->hasMany('App\Models\Payment');
+        return $this->hasMany(TournamentUser::class);
     }
 }

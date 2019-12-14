@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -20,13 +21,8 @@ class Payment extends Model
         'CASH' => 'cash',
     ];
 
-    public function user()
+    public function tournamentUser()
     {
-        return $this->belongsTo('App\Models\User');
-    }
-
-    public function tournament()
-    {
-        return $this->belongsTo('App\Models\Tournament');
+        return $this->belongsTo(User::class, 'payment_id', 'id');
     }
 }

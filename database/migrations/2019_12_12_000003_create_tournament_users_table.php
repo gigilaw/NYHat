@@ -17,8 +17,7 @@ class CreateTournamentUsersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tournament_id');
-            $table->boolean('willing_to_captain')->nullable();
-            $table->string('pairing', 255)->nullable();
+            $table->unsignedInteger('payment_id');
 
             $table->timestamps();
             $table->softDeletes();

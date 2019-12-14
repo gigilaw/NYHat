@@ -16,4 +16,4 @@ use Illuminate\Http\Request;
 Route::get('/users', 'API\UserController@index')->name('users');
 
 Route::get('/tournaments', 'API\TournamentController@index')->name('tournaments');
-Route::get('/{tournament}/participants', 'API\TournamentController@participants')->name('tournament.participants');
+Route::get('/{nameCode}/participants', 'API\TournamentController@participants')->name('tournament.participants');
