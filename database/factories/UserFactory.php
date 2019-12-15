@@ -18,14 +18,15 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->firstname,
+        'last_name' => $faker->lastname,
         'email' => $faker->unique()->safeEmail,
         'position' => $faker->randomElement(User::$position),
-        'throwing' => $faker->numberBetween(1, 5),
-        'catching' => $faker->numberBetween(1, 5),
-        'speed' => $faker->numberBetween(1, 5),
-        'offense' => $faker->numberBetween(1, 5),
-        'defense' => $faker->numberBetween(1, 5),
+        'throwing' => $faker->numberBetween(1, 4),
+        'catching' => $faker->numberBetween(1, 4),
+        'speed' => $faker->numberBetween(1, 4),
+        'offense' => $faker->numberBetween(1, 4),
+        'defense' => $faker->numberBetween(1, 4),
         'nick_name' => $faker->name,
         'age' => $faker->randomNumber(2),
         'height' => $faker->numberBetween(150, 200),

@@ -28,7 +28,8 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'throwing',
         'catching',
@@ -39,6 +40,7 @@ class User extends Model
         'age',
         'height',
         'gender',
+        'nick_name',
     ];
 
     public function tournaments()

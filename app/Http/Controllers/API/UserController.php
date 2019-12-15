@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
+use Exception;
 
 class UserController extends Controller
 {
@@ -24,21 +27,14 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @throws Exception
      */
-    public function update(Request $request, User $user)
+    public function store(StoreUser $request): UserResource
     {
-        //
+        $validatedData = $request->validated();
+        $user = User::create($validatedData)->fresh();
+
+        return new UserResource($user);
     }
 }
