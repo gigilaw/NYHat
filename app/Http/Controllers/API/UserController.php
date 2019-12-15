@@ -11,8 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\TournamentUser;
 use App\Http\Requests\StoreUser;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\ParticipantResource;
 
 class UserController extends Controller
 {
@@ -34,7 +34,7 @@ class UserController extends Controller
      *
      * @throws Exception
      */
-    public function register(StoreUser $request, String $nameCode): UserResource
+    public function register(StoreUser $request, String $nameCode): ParticipantResource
     {
         $validatedData = $request->validated();
         $user = User::create($validatedData)->fresh();
@@ -52,6 +52,6 @@ class UserController extends Controller
                                         ->first();
         
         $payment->tournamentUser()->associate($tournamentUser)->save();
-        return new UserResource($user);
+        return new ParticipantResource($tournamentUser);
     }
 }
