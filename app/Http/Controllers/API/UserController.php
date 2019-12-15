@@ -43,15 +43,19 @@ class UserController extends Controller
         //attach new registration to tournament
         $user->tournaments()->attach($tournament->id);
 
+        $tournamentUser = TournamentUser::where('user_id', $user->id)
+            ->where('tournament_id', $tournament->id)
+            ->first();
+
+        if (isset($validatedData['note'])) {
+            $tournamentUser->fill(['note' => $validatedData['note']])->save();
+        }
+
         //create payment and associate to tournamentUser
         $payment = new Payment;
         $payment->reference_code = Str::random(4);
-
-        $tournamentUser = TournamentUser::where('user_id', $user->id)
-                                        ->where('tournament_id', $tournament->id)
-                                        ->first();
-        
         $payment->tournamentUser()->associate($tournamentUser)->save();
+        
         return new ParticipantResource($tournamentUser);
     }
 }

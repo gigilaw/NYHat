@@ -38,6 +38,7 @@ class StoreUser extends FormRequest
             'speed' => 'required|numeric|between:1,4',
             'offense' => 'required|numeric|between:1,4',
             'defense' => 'required|numeric|between:1,4',
+            'note' => 'string',
         ];
     }
 }
