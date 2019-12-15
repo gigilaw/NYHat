@@ -17,3 +17,5 @@ Route::get('/users', 'API\UserController@index')->name('users');
 
 Route::get('/tournaments', 'API\TournamentController@index')->name('tournaments');
 Route::get('/{nameCode}/participants', 'API\TournamentController@participants')->name('tournament.participants');
+
+Route::get('/payments', 'API\PaymentController@index')->name('payments');

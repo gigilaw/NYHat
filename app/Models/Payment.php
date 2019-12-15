@@ -23,6 +23,6 @@ class Payment extends Model
 
     public function tournamentUser()
     {
-        return $this->belongsTo(User::class, 'payment_id', 'id');
+        return $this->belongsTo(TournamentUser::class, 'id', 'payment_id');
     }
 }
