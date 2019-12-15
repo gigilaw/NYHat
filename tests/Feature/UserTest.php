@@ -24,7 +24,7 @@ class UserTest extends TestCase
         ->assertJson([]);
     }
 
-    public function testApiStore()
+    public function testApiRegister()
     {
         $fakeUser = factory(User::class)->make();
         $data = [
@@ -42,9 +42,9 @@ class UserTest extends TestCase
             'defense' => $fakeUser->defense,
         ];
 
-        $response = $this->json('POST', route('users.store'), $data);
+        $response = $this->json('POST', route('users.register', 'nyhat2019'), $data);
         $response
             ->assertStatus(200)
-            ->assertJson(['data' => true]);
+            ->assertJson(['data' => $data]);
     }
 }

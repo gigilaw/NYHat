@@ -9,9 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TournamentUser extends Model
 {
+    protected $fillable = [
+        'note',
+    ];
+
     public function payment()
     {
-        return $this->hasOne(Payment::class, 'id', 'payment_id');
+        return $this->hasOne(Payment::class);
     }
 
     public function tournament()

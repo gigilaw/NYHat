@@ -17,7 +17,7 @@ class CreateTournamentUsersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tournament_id');
-            $table->unsignedInteger('payment_id');
+            $table->string('note', 255)->nullable();
 
             $table->timestamps();
             $table->softDeletes();

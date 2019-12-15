@@ -15,10 +15,11 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('status');
+            $table->unsignedInteger('tournament_user_id')->nullable();
+            $table->string('status');
             $table->string('reference_code', 255);
-            $table->string('form_of_payment', 255);
-            $table->dateTime('paid_at');
+            $table->string('form_of_payment', 255)->nullable();
+            $table->dateTime('paid_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

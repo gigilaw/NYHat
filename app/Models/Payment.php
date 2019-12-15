@@ -10,6 +10,10 @@ class Payment extends Model
 {
     use SoftDeletes;
 
+    protected $attributes = [
+        'status' => 'unpaid'
+    ];
+
     public static $status = [
         'PAID' => 'paid',
         'UNPAID' => 'unpaid',
@@ -21,8 +25,12 @@ class Payment extends Model
         'CASH' => 'cash',
     ];
 
+    public $fillable = [
+        'reference_code'
+    ];
+
     public function tournamentUser()
     {
-        return $this->belongsTo(TournamentUser::class, 'id', 'payment_id');
+        return $this->belongsTo(TournamentUser::class);
     }
 }
