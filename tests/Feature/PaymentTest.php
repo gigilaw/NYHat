@@ -2,12 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Payment;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UserTest extends TestCase
+class PaymentTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,15 +19,16 @@ class UserTest extends TestCase
      */
     public function testApiIndex()
     {
-        $response = $this->getJson(route('users.index'));
+        $response = $this->getJson(route('payments.index'));
 
         $response->assertStatus(200)
         ->assertJson([]);
     }
 
-    public function testApiRegister()
+    public function testApiUpdate()
     {
         $fakeUser = factory(User::class)->make();
+
         $data = [
             'first_name' => $fakeUser->first_name,
             'last_name' => $fakeUser->last_name,
@@ -42,7 +44,23 @@ class UserTest extends TestCase
             'defense' => $fakeUser->defense,
         ];
 
-        $response = $this->json('POST', route('users.register', 'nyhat2019'), $data);
+        $response = $this->postJson(route('users.register', 'nyhat2019'), $data);
+        $response
+            ->assertStatus(200)
+            ->assertJson([]);
+
+        $responseArray = $response->json();
+        $payment = Payment::find($responseArray['data']['payment']['id']);
+
+        $paymentData[] = [
+            'id' => $payment->id,
+            'status' => 'paid',
+            'note' => 'hellowow',
+            'form_of_payment' => 'payme',
+            'paid_at' => '2019-01-01',
+        ];
+
+        $response = $this->postJson(route('payments.update'), $paymentData);
         $response
             ->assertStatus(200)
             ->assertJson([]);
