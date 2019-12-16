@@ -20,3 +20,4 @@ Route::get('/tournaments', 'API\TournamentController@index')->name('tournaments'
 Route::get('/{nameCode}/participants', 'API\TournamentController@participants')->name('tournament.participants');
 
 Route::get('/payments', 'API\PaymentController@index')->name('payments');
+Route::post('/payments', 'API\PaymentController@update')->name('payments.update');

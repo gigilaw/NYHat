@@ -23,10 +23,14 @@ class Payment extends Model
         'PAYME' => 'payme',
         'BANK' => 'bank',
         'CASH' => 'cash',
+        'OTHER' => 'other',
     ];
 
-    public $fillable = [
-        'reference_code'
+    protected $fillable = [
+        'reference_code',
+        'form_of_payment',
+        'paid_at',
+        'status',
     ];
 
     public function tournamentUser()
