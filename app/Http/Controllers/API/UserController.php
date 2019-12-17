@@ -56,6 +56,22 @@ class UserController extends Controller
         $payment->reference_code = Str::random(4);
         $payment->tournamentUser()->associate($tournamentUser)->save();
         
+        //update Tournament avg values
+        $updates = [];
+        $prevUsers = User::count()-1;
+
+        $avgSkills = [
+            'avg_throwing',
+            'avg_catching',
+            'avg_speed',
+            'avg_offense',
+            'avg_defense',
+        ];
+        foreach ($avgSkills as $avgSkill) {
+            $updates[$avgSkill] = round((($tournament->$avgSkill * $prevUsers) + $validatedData[Str::substr($avgSkill, 4)]) / User::count(), 2);
+        }
+
+        $tournament->update($updates);
         return new ParticipantResource($tournamentUser);
     }
 }

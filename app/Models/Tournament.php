@@ -11,6 +11,20 @@ class Tournament extends Model
 {
     use softDeletes;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'cost',
+        'capacity',
+        'start_date',
+        'end_date',
+        'avg_throwing',
+        'avg_catching',
+        'avg_speed',
+        'avg_offense',
+        'avg_defense',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'tournament_users')->withTimeStamps();
