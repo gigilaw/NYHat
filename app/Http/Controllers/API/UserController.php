@@ -5,12 +5,15 @@ namespace App\Http\Controllers\API;
 use Exception;
 use App\Models\User;
 use App\Models\Payment;
+use App\Jobs\SendEmails;
 use App\Models\Tournament;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\UserRegistration;
 use App\Models\TournamentUser;
 use App\Http\Requests\StoreUser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\ParticipantResource;
 
@@ -70,8 +73,11 @@ class UserController extends Controller
         foreach ($avgSkills as $avgSkill) {
             $updates[$avgSkill] = round((($tournament->$avgSkill * $prevUsers) + $validatedData[Str::substr($avgSkill, 4)]) / User::count(), 2);
         }
-
         $tournament->update($updates);
+
+        // Mail::to($validatedData['email'])->queue(new UserRegistration($user));
+        SendEmails::dispatch($tournamentUser);
+
         return new ParticipantResource($tournamentUser);
     }
 }

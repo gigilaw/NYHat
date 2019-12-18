@@ -52,4 +52,9 @@ class User extends Model
     {
         return $this->hasMany(TournamentUser::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('mailable', function () {
+    $tournamentUser = App\Models\TournamentUser::find(19);
+
+    return new App\Mail\InvoicePaid($invoice);
+});
