@@ -37,9 +37,8 @@ class UserController extends Controller
      *
      * @throws Exception
      */
-    public function register(Request $request, String $nameCode): ParticipantResource
+    public function register(StoreUser $request, String $nameCode): ParticipantResource
     {
-        dd($request);
         $validatedData = $request->validated();
         $user = User::create($validatedData)->fresh();
         $tournament = Tournament::where('name_code', $nameCode)->first();
