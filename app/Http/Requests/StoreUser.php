@@ -28,7 +28,7 @@ class StoreUser extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'nick_name' => 'string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique',
             'age' => 'required|digits:2',
             'height' => 'required|digits:3',
             'gender' => 'required|in:' . implode(',', User::$gender),
