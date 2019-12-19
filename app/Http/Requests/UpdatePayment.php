@@ -29,7 +29,7 @@ class UpdatePayment extends FormRequest
             '*.status' => 'in:' . implode(',', Payment::$status),
             '*.form_of_payment' => 'required_if:*.status,paid|in:' . implode(',', Payment::$formOfPayment),
             '*.paid_at' => 'required_if:*.status,paid|date_format:Y-m-d|before:tomorrow',
-            '*.note' => 'string',
+            '*.note' => 'string|nullable',
         ];
     }
 }

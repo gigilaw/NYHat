@@ -27,7 +27,7 @@ class StoreUser extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'nick_name' => 'string|max:255',
+            'nick_name' => 'string|max:255|nullable',
             'email' => 'required|email|unique:users,email',
             'age' => 'required|digits:2',
             'height' => 'required|digits:3',
@@ -38,7 +38,7 @@ class StoreUser extends FormRequest
             'speed' => 'required|numeric|between:1,4',
             'offense' => 'required|numeric|between:1,4',
             'defense' => 'required|numeric|between:1,4',
-            'note' => 'string',
+            'note' => 'string|nullable',
         ];
     }
 }
