@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('mailable', function () {
-    $tournamentUser = App\Models\TournamentUser::find(19);
+    $tournamentUser = App\Models\TournamentUser::find(11);
 
     return new App\Mail\UserRegistration($tournamentUser);
 });
