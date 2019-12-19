@@ -22,6 +22,7 @@ class PaymentCollection extends ResourceCollection
                     'form_of_payment' => $payment->form_of_payment,
                     'reference_code' => $payment->reference_code,
                     'paid_at' => $payment->paid_at,
+                    'note' => $payment->note,
                     'tournament' => $payment->tournamentUser,
                     'created_at' => $payment->created_at,
                     'updated_at' => $payment->updated_at,

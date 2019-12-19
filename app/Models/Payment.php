@@ -31,6 +31,7 @@ class Payment extends Model
         'form_of_payment',
         'paid_at',
         'status',
+        'note',
     ];
 
     public function tournamentUser()

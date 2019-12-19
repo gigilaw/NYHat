@@ -44,14 +44,11 @@ class PaymentController extends Controller
             if (isset($payment['paid_at'])) {
                 $updates['paid_at'] = $payment['paid_at'];
             }
-
-            Payment::where('id', $payment['id'])->update($updates);
-
             if (isset($payment['note'])) {
-                $tournamentUser = Payment::find($payment['id'])->tournamentUser;
-                $tournamentUser->note = $payment['note'];
-                $tournamentUser->save();
+                $updates['note'] = $payment['note'];
             }
+            
+            Payment::where('id', $payment['id'])->update($updates);
         }
 
         return new PaymentCollection(Payment::all());
