@@ -8,7 +8,7 @@
   
   <ol>
     <li>
-      <h3>Payme</h3>
+      <h3>PayMe</h3>
       <p>
         Scan HKUPA's QR code for Payme. In the notes, make sure to say your <strong>Reference Code: {{$referenceCode}}</strong> so we know it's you that paid
         <br/>
