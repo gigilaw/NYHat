@@ -12,9 +12,8 @@
       <p>
         Scan HKUPA's QR code for Payme. In the notes, make sure to say your <strong>Reference Code: {{$referenceCode}}</strong> so we know it's you that paid
         <br/>
-        {{-- <img width='250px' height='300px' src="{{ URL::to('/HKUPA_PAYME.jpeg') }}"> --}}
-        <img src="{{ $message->embed(public_path() . '/images/HKUPA_PAYME.jpg') }}" />      
-      </p>
+        <img width='250px' height='300px' src="{{ URL::to('/HKUPA_PAYME.jpeg') }}">
+</p>
       <p>Or click <a href='https://qr.payme.hsbc.com.hk/2/99oJAfhU9eCGQUyGTLEedV'>HERE</a> on your phone.
       </p>
     </li>
