@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{p5nM:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),r=t.n(a),i=t("Wbzz"),o=t("Bl7J"),c=t("vrFN");n.default=function(){return r.a.createElement(o.a,null,r.a.createElement(c.a,{title:"Registration Form"}),r.a.createElement(i.Link,{to:"/"},"Return to sign in"))}}}]);
-//# sourceMappingURL=component---src-pages-page-2-js-21ac4fb3baa9648bf43c.js.map
