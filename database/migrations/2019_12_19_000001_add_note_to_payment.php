@@ -26,7 +26,7 @@ class AddNoteToPayment extends Migration
     public function down()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->dropColumn('payments');
+            $table->dropColumn('note');
         });
     }
 }
