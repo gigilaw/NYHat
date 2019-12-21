@@ -26,9 +26,9 @@ class UpdatePayment extends FormRequest
     {
         return [
             '*.id' => 'required|numeric|exists:payments,id',
-            '*.status' => 'in:' . implode(',', Payment::$status),
-            '*.form_of_payment' => 'required_if:*.status,paid|in:' . implode(',', Payment::$formOfPayment),
-            '*.paid_at' => 'required_if:*.status,paid|date_format:Y-m-d|before:tomorrow',
+            '*.status' => 'in:' . implode(',', Payment::$status) . '|nullable',
+            '*.form_of_payment' => 'in:' . implode(',', Payment::$formOfPayment) . '|nullable',
+            '*.paid_at' => 'date_format:Y-m-d|before:tomorrow|nullable',
             '*.note' => 'string|nullable',
         ];
     }
