@@ -3,7 +3,7 @@
     Congratulations {{$fullName}}! You have registered for HKUPA New Years Hat 2019!
     <br/><br/>
     Only paid players will be drafted! In the payment note tell us your reference code. Your reference code is <strong>{{$referenceCode}} </strong>. 
-    <br/>Payment deadline is <strong>Dec. 25</strong>. You can pay the $50 fee in the following ways:
+    <br/>Payment deadline is <strong>Dec. 26th</strong>. You can pay the $50 fee in the following ways:
   </p>
   
   <ol>
