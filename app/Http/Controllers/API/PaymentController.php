@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePayment;
 use App\Http\Resources\PaymentCollection;
+use App\Http\Resources\PaymentResource;
 use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
@@ -28,7 +29,7 @@ class PaymentController extends Controller
      * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePayment $request): PaymentCollection
+    public function update(UpdatePayment $request): PaymentResource
     {
         $validatedData = $request->validated();
 
@@ -47,10 +48,10 @@ class PaymentController extends Controller
             if (isset($payment['note'])) {
                 $updates['note'] = $payment['note'];
             }
-            
+
             Payment::where('id', $payment['id'])->update($updates);
         }
 
-        return new PaymentCollection(Payment::all());
+        return new PaymentResource(Payment::find($validatedData[0]['id']));
     }
 }
