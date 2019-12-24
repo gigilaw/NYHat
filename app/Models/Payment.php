@@ -24,6 +24,7 @@ class Payment extends Model
         'BANK' => 'bank',
         'CASH' => 'cash',
         'OTHER' => 'other',
+        'NONE' => 'none',
     ];
 
     protected $fillable = [
